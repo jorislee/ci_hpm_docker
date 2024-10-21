@@ -40,11 +40,6 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGE_NAME }}
 
-      - name: Create temporary credentials file
-        run: |
-            echo "${{ secrets.CI_KERNEL_URL }}" >  ./GIT_URL.txt && \
-            echo "${{ secrets.CI_BUILD_TOKEN }}" > ./GIT_TOKEN.txt
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
